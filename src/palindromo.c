@@ -1,8 +1,8 @@
 #include "../includes/palindromo.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
+#include <stdbool.h>  //bool
+#include <string.h>  //memset
 
 #define LONG_TEXT 256
 
