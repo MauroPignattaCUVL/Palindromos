@@ -6,35 +6,37 @@
 
 #define LONG_TEXT 256
 
-int contarChar (char const *pal)
+int contarChar (char const *palabra)
 {
-    int n=0;
-    while (*pal++)
+    int cont=0;
+    while (*palabra++)
     {
-        n++; 
+        cont++; 
     }
-    return n;
+    return cont;
 }
 void strrev(char * destino, char const *origen)
 {
     int i = 0;
-    int n = contarChar(origen);
-    while (i < n)
+    int cantCaracteres = contarChar(origen);
+    while (i < cantCaracteres)
     {
         * (destino + i) = * (origen + n - 1 - i);
         i++;
     }
     * (destino + i) = '\0';
 }
-bool compararCadena(char const * x,char const * y)
+
+bool compararCadena(char const * primerCadena,char const * segundaCadena)
 {
     bool compare = true;
     while (*x && compare)
     {
-        compare = *x ++ == * y ++ ? true : false;
+        compare = *primerCadena ++ == * segundaCadena ++ ? true : false;
     }
     return compare;
 }
+
 bool esPalindromo(char const * palabra, FILE * ptrFile)
 {
     char *aux = calloc(LONG_TEXT + 1,1);
@@ -58,15 +60,15 @@ bool esPalindromo(char const * palabra, FILE * ptrFile)
 
 int buscarPalindromos(char const * texto, FILE * ptrFile)
 {
-    char *aux = calloc(LONG_TEXT + 1 + 1,1);
-    char *ptrAux = aux;
     int cont = 0;
+    char *aux = calloc(LONG_TEXT + 1 + 1,1);
     //Comprueba que se haya asignado la memoria
     if (aux == NULL)
     {
         printf("No se pudo asignar memoria");
         exit(EXIT_FAILURE);
     }
+    char *ptrAux = aux;
     while (*texto)
     {
         aux = ptrAux;
@@ -83,13 +85,13 @@ int buscarPalindromos(char const * texto, FILE * ptrFile)
 
 void imprimirPalindromos(FILE * ptrFile)
 {
-    printf("Los palindromos son:\n");
     char *aux = calloc(LONG_TEXT + 1, 1);
     if (aux == NULL)
     {
         printf("No se pudo asignar memoria");
         exit(EXIT_FAILURE);
     }
+    printf("Los palindromos son:\n");
     while(!feof(ptrFile))
     {
         aux = memset((char*) aux,'\0', sizeof(aux));
