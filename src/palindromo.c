@@ -21,7 +21,7 @@ void strrev(char * destino, char const *origen)
     int cantCaracteres = contarChar(origen);
     while (i < cantCaracteres)
     {
-        * (destino + i) = * (origen + n - 1 - i);
+        * (destino + i) = * (origen + cantCaracteres - 1 - i);
         i++;
     }
     * (destino + i) = '\0';
